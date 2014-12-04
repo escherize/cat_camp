@@ -1,4 +1,14 @@
 div#title {
-  color: #7b2d06;
-  font-size: 3em;
+    color: #7b2d06;
+    font-size: 3em;
+}
+
+.player-input {
+    margin: 10px auto;
+		align: center;
+		font-size: 2em;
+}
+
+div.home-page {
+		width: 100%;
 }

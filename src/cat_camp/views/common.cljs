@@ -5,5 +5,4 @@
   (if (= state val) "active" ""))
 
 (defn header []
-  [:h3 "Catan Companion"]
-  )
+  [:h3 "Catan Companion"])
