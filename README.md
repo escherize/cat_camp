@@ -4,14 +4,6 @@ A reagent webapp designed to ... well, that part is up to you.
 
 ## Usage
 
-Create a css file.
-
-```
-$ lein garden once
-```
-
-*Note: if it says "Successful", but you aren't able to type anything into the terminal, hit `Ctrl-c Ctrl-c`.*
-
 Create a javascript file from your clojurescript files.
 
 ```
