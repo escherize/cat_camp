@@ -2,14 +2,16 @@
   (:require [cat-camp.session :as ses]
             [secretary.core :as sec]))
 
-
 (defn player-input [key placeholder]
   [:div
    [:input.player-input
-    {:type "text"
-     :value (ses/global-state key)
-     :placeholder placeholder
-     :on-change #(ses/global-put! key (-> % .-target .-value))}]])
+    (let [pi {:type "text"
+              :value (ses/global-state key)
+              :placeholder placeholder
+              :on-change #(ses/global-put! key (-> % .-target .-value))}]
+      (if (= key :p1)
+        (assoc pi :autofocus "autofocus")
+        pi))]])
 
 (defn named-players []
   (->> [:p1 :p2 :p3 :p4]
