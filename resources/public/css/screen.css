@@ -12,3 +12,147 @@ div#title {
 div.home-page {
 		width: 100%;
 }
+
+/*style.css for catan roller*/
+body {
+	font-size: 18px;
+	background-color: #6bb9f0;
+	/*text-align: center;*/
+	color: white;
+}
+.container {
+	max-width: 1000px;
+}
+
+.container.start {
+	width: 500px;
+	max-width: 100%;
+}
+
+/*--------------------start page--------------------*/
+input[type='text'] {
+	margin: 30px auto;
+	background-color: transparent;
+	border: none;
+	border-bottom: 2px solid white;
+	font-size: 2em;
+}
+
+input:focus, a:focus {
+	box-shadow: none;
+	outline: 0;
+}
+.btn#disabled{
+	opacity: 0.5;
+}
+
+a:focus input, a:active input {
+	border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+
+/*placeholder text*/
+
+input::-webkit-input-placeholder{
+	color:white;
+	opacity: 0.2;
+}
+
+input::-moz-placeholder{
+	color:white;
+	opacity: 0.2;
+}
+
+input:-moz-placeholder{
+	color:white;
+	opacity: 0.2;
+}
+/*Main page*/
+#roll {
+	font-size: 4.5em;
+}
+
+.btn {
+	margin-top: 15px;
+	width: 130px;
+	padding: 10px;
+	font-size: 1em;
+	color: white;
+	background: #3A539B;	
+}
+
+.graph {
+	border: 3px solid red;
+	width: 100%;
+	height: 300px;
+}
+
+.players{
+	list-style: none;
+	font-size: 1.5em;
+	padding-left: 0;
+}
+.players li {
+	margin: 0.5em 0;
+}
+.players .current {
+	font-weight: bold;
+	font-size: 1.2em;
+	margin: 0;
+}
+/*-------------player colors--------------*/
+.red {
+	background-color: #E74C3C;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.blue {
+	color: #4B77BE;
+}
+
+.orange {
+	color: #E87E04;
+}
+
+.white {
+	color: #BDC3C7;
+}
+
+
+
+.hex1{
+    background-color: #87D37C;
+    text-align: center;
+    /*line-height: 100px;*/
+    line-height: 75px;
+    height: 78px;
+    /*height: 100px;
+    /*width: 173.2px;*/
+    width: 130px;
+    margin: 60px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.hex1:after,
+.hex1:before{
+    border-left: 65.7px solid transparent;
+    border-right: 65.7px solid transparent;
+    content: "";
+    position: absolute;
+    left: 0;
+    z-index: -1;
+}
+
+.hex1:before{
+    border-top: 38px solid transparent;
+    border-bottom: 38px solid #87D37C;
+    top: -75px;
+}
+
+.hex1:after{
+    bottom: -75px;
+    border-top: 38px solid #87D37C;
+    border-bottom: 38px solid transparent;
+}
