@@ -37,7 +37,7 @@
    [player-input :p2 "Blue"]
    [player-input :p3 "White"]
    [player-input :p4 "Orange"]
-   [:input.player-input
+   [:input.player-input.btn
     (if (#(<= 3 (named-players)))
       (dissoc (next-page-button) :disabled)
       (assoc (next-page-button) :disabled true))]])
