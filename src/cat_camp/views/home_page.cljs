@@ -30,7 +30,7 @@
    :value (button-title)
    :on-click #(do
                 (ses/global-put! :num-players (named-players))
-                (sec/dispatch! "roll-order"))})
+                (ses/visit "#roll-order"))})
 
 (defn home-page []
   [:div.home-page
@@ -43,3 +43,5 @@
     (if (#(<= 3 (named-players)))
       (dissoc (next-page-button) :disabled)
       (assoc (next-page-button) :disabled true))]])
+
+;;roll-for-order

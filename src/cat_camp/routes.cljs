@@ -28,5 +28,8 @@
   (defroute "/roll-order" []
     (global-put! :current-page (pages :roll-order-page)))
 
+  (defroute "/roller" []
+    (global-put! :current-page (pages :roller-page)))
+
   (hook-browser-navigation!)
   )
