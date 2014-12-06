@@ -5,120 +5,129 @@ div#title {
 
 .player-input {
     margin: 10px auto;
-		align: center;
-		font-size: 2em;
+    align: center;
+    font-size: 2em;
 }
+
 
 /*div.home-page {
 		width: 100%;
 }
 */
+
 /*style.css for catan roller*/
+
 body {
-	font-size: 18px;
-	background-color: #6bb9f0;
-	/*text-align: center;*/
-	color: white;
+    font-size: 18px;
+    background-color: #6bb9f0;
+    /*text-align: center;*/
+    color: white;
 }
 .container {
-	max-width: 1000px;
+    max-width: 1000px;
 }
+
 
 div.home-page  {
 	width: 500px;
 	max-width: 100%;
+
+/*.container.start {
+    width: 500px;
+    max-width: 100%;*/
+
 }
 
 /*--------------------start page--------------------*/
 input[type='text'] {
-	margin: 30px auto;
-	background-color: transparent;
-	border: none;
-	border-bottom: 2px solid white;
-	font-size: 2em;
+    margin: 30px auto;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    font-size: 2em;
 }
 
 input:focus, a:focus {
-	box-shadow: none;
-	outline: 0;
-}
+                 box-shadow: none;
+                 outline: 0;
+             }
 .btn:disabled{
-	opacity: 0.5;
+    opacity: 0.5;
 }
 
 a:focus input, a:active input {
-	border: 1px solid rgba(255, 255, 255, 0.5);
-}
+                   border: 1px solid rgba(255, 255, 255, 0.5);
+               }
 
 
 /*placeholder text*/
 
 input::-webkit-input-placeholder{
-	color:white;
-	opacity: 0.2;
+    color:white;
+    opacity: 0.2;
 }
 
 input::-moz-placeholder{
-	color:white;
-	opacity: 0.2;
+    color:white;
+    opacity: 0.2;
 }
 
 input:-moz-placeholder{
-	color:white;
-	opacity: 0.2;
+    color:white;
+    opacity: 0.2;
 }
 /*Main page*/
 #roll {
-	font-size: 4.5em;
+    font-size: 4.5em;
 }
 
 .btn {
-	margin-top: 15px;
-	padding: 10px;
-	font-size: 1em;
-	color: white;
-	background: #3A539B;	
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 1em;
+    color: white;
+    background: #3A539B;
 }
 
 .graph {
-	border: 3px solid red;
-	width: 100%;
-	height: 300px;
+    border: 3px solid red;
+    width: 100%;
+    height: 300px;
 }
 
 .players{
-	list-style: none;
-	font-size: 1.5em;
-	padding-left: 0;
+    list-style: none;
+    font-size: 1.5em;
+    padding-left: 0;
 }
-.players li {
-	margin: 0.5em 0;
+.players td {
+    margin: 0.5em 0;
+		line-height: 1.2em;
 }
+
 .players .current {
-	font-weight: bold;
-	font-size: 1.2em;
-	margin: 0;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 0;
 }
 /*-------------player colors--------------*/
 .red {
-	background-color: #E74C3C;
-	padding: 5px 10px;
-	border-radius: 5px;
+    background-color: #E74C3C;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .blue {
-	color: #4B77BE;
+    color: #4B77BE;
 }
 
 .orange {
-	color: #E87E04;
+    color: #E87E04;
 }
 
 .white {
-	color: #BDC3C7;
+    color: #BDC3C7;
 }
-
-
 
 .hex1{
     background-color: #87D37C;
