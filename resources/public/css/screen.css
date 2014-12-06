@@ -9,10 +9,10 @@ div#title {
 		font-size: 2em;
 }
 
-div.home-page {
+/*div.home-page {
 		width: 100%;
 }
-
+*/
 /*style.css for catan roller*/
 body {
 	font-size: 18px;
@@ -24,7 +24,7 @@ body {
 	max-width: 1000px;
 }
 
-.container.start {
+div.home-page  {
 	width: 500px;
 	max-width: 100%;
 }
