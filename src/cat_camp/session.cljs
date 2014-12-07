@@ -1,16 +1,27 @@
 (ns cat-camp.session
   (:require [reagent.core :as reagent :refer [atom]]))
 
+(defn blank-history []
+  (zipmap (range 2 13) (repeat 0)))
+
 ;; ----------
 ;; State
 (def app-state
   (atom {:turn-count -1
          :last-roll 0
-         :history (zipmap (range 2 13) (repeat 0))
-         :p1 "John"
-         :p2 "Kate"
-         :p3 "Plus"
-         :p4 "Eight"}))
+         :history (blank-history)
+         :players {:1 {:name ""
+                       :color "Red"
+                       :history (blank-history)}
+                   :2 {:name ""
+                       :color "Blue"
+                       :history (blank-history)}
+                   :3 {:name ""
+                       :color "White"
+                       :history (blank-history)}
+                   :4 {:name ""
+                       :color "Orange"
+                       :history (blank-history)}}}))
 
 ;; ----------
 ;; Helper Functions
@@ -26,3 +37,15 @@
 
 (defn visit [path]
   (set! (.-location js/window) path))
+
+(defn player [n]
+  "player 1 is the first player."
+  (-> @app-state
+      (get :players)
+      (get (keyword (str n)))))
+
+(defn update-player [n kw v]
+  (swap! app-state
+         #(update-in %
+                     [:players (-> n str keyword)]
+                     (fn [p] (assoc p kw v)))))

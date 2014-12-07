@@ -14,13 +14,13 @@
   (let [players (u/->players ses/app-state)]
 
     ;; first roll
-    (when (not (pos? (global-state :turn-count))) (u/roll-dice))
+    (when (= -1 (global-state :turn-count)) (u/roll-dice))
 
     ;; assign turn
     (global-put!
      :whose-turn
      (nth players (rem (global-state :turn-count)
-                       (count players))))
+                       (u/named-players))))
     [:div.row
      [:div.col-sm-3
       [:div#roll.hex1 (global-state :last-roll)]
@@ -29,10 +29,13 @@
                            :on-click #(u/roll-dice)}]]
      [:div.col-sm-2
       [:ul.players
-       (doall (for [p players] (render-player p)))]]
+       (doall (for [p players] (render-player p)))]
+      [:span (str "turn #:" (global-state :turn-count))]]
      [:div.col-sm-7
       [:div#histogram "many gfx"]]]))
 
 (comment
-  [:span (str "turn #:" (global-state :turn-count))]
+
+
+
   )

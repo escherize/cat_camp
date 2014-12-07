@@ -1,22 +1,24 @@
 (ns cat-camp.views.roll-order-page
-  (:require  [cat-camp.session :refer [global-state
-                                       global-put!
-                                       app-state]]
-             [cat-camp.util :refer [roll
-                                    ->players]]))
+  (:require  [cat-camp.session :as s]
+             [cat-camp.util :as u]))
 
 (defn roller-row [pp pname]
   [:tr
-   [:td
-    (str (global-state (keyword pp)))]
-   [:td
-    (global-state (keyword (str pp "-roll"))
-                  [(keyword (str "input#" pp "-roller.roller.btn"))
-                   {:type "button"
-                    :value (str "Roll for " pname)
-                    :on-click #(global-put!
-                                (keyword (str pp "-roll"))
-                                (roll))}])]])
+   [:td (str (s/global-state (keyword pp)))]
+   [:td (s/global-state (keyword (str pp "-roll"))
+                        [(keyword (str "input#" pp "-roller.roller.btn"))
+                         {:type "button"
+                          :value (str "Roll for " pname)
+                          :on-click #(s/global-put!
+                                      (keyword (str pp "-roll"))
+                                      (u/roll))}])]])
+
+(defn everyone-rolled? []
+  (= (u/named-players)
+     (->> [:p1-roll :p2-roll :p3-roll
+           :p4-roll :p5-roll :p6-roll]
+          (keep s/global-state)
+          count)))
 
 (defn roll-order-page []
   [:div
@@ -24,19 +26,18 @@
    [:p "Let's see who goes first!"]
    [:table#roll-order
     [:thead [:td "Player"] [:td "Score"]]
-    [roller-row "p1" (global-state :p1)]
-    [roller-row "p2" (global-state :p2)]
-    [roller-row "p3" (global-state :p3)]
-    [roller-row "p4" (global-state :p4)]]
-   (when (and (global-state :p1-roll)
-              (global-state :p2-roll)
-              (global-state :p3-roll)
-              (global-state :p4-roll))
-     (let [ordered-players (map :name (->players app-state))
+    [roller-row "p1" (s/global-state :p1)]
+    [roller-row "p2" (s/global-state :p2)]
+    [roller-row "p3" (s/global-state :p3)]
+    (when (>= (u/named-players) 4)
+      [roller-row "p4" (s/global-state :p4)])]
+   (when (everyone-rolled?)
+     (let [ordered-players (map :name (u/->players s/app-state))
            forward (clojure.string/join " -> " ordered-players)
            backward (clojure.string/join " -> " (reverse ordered-players))
            length (apply str (repeat (count forward) " "))]
        [:div
-        [:p "Now begins the setup phase. The order of play follows below! :)"]
+        [:h3 "Setup phase."]
+        [:p "The order of play follows:"]
         [:p (str forward " - - -> " backward)]
-        [:button [:a {:href "#/roller"} "Nice! Let's begin."]]]))])
+        [:button.btn [:a {:href "#/roller"} "Nice! Let's begin."]]]))])
