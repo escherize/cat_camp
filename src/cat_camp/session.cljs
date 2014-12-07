@@ -7,10 +7,10 @@
   (atom {:turn-count -1
          :last-roll 0
          :history (zipmap (range 2 13) (repeat 0))
-         :p1 "John"
-         :p2 "Kate"
-         :p3 "Plus"
-         :p4 "Eight"}))
+         :p1 ""
+         :p2 ""
+         :p3 ""
+         :p4 ""}))
 
 ;; ----------
 ;; Helper Functions
