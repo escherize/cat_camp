@@ -6,13 +6,16 @@
 (defn player-input [number placeholder]
   (let [player-map (ses/player number)]
     [:div
-     ;;     [:pre (pr-str player-map)]
+     [:pre (pr-str player-map)]
      [:input.player-input
       (let [pi {:type "text"
                 :value (:name player-map)
                 :placeholder placeholder
-                :on-change #(ses/update-player number :name (-> % .-target .-value))}]
-        (if (= key :p1)
+                :on-change #(ses/update-player
+                             number
+                             :name
+                             (-> % .-target .-value))}]
+        (if (= number 1)
           (assoc pi :autofocus "autofocus")
           pi))]]))
 

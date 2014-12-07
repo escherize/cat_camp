@@ -15,8 +15,12 @@
                                         (u/roll))}])]])
 
 (defn everyone-rolled? []
-  (= (s/named-players)
-   (-> s/app-state)))
+  (= (u/named-players)
+     (->> s/app-state
+          :players
+          vals
+          (keep :order-roll)
+          count)))
 
 (defn roll-order-page []
   [:div

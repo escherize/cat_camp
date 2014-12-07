@@ -1,6 +1,6 @@
 (ns cat-camp.routes
   (:require [secretary.core :as secretary :include-macros true :refer [defroute]]
-            [cat-camp.session :refer [global-put!]]
+            [cat-camp.session :as s]
             [cat-camp.views.pages :refer [pages]]
             [goog.events :as events]
             [goog.history.EventType :as EventType])
@@ -23,13 +23,13 @@
   (secretary/set-config! :prefix "#")
 
   (defroute "/" []
-    (global-put! :current-page (pages :home-page)))
+    (s/global-put! :current-page (pages :home-page)))
 
   (defroute "/roll-order" []
-    (global-put! :current-page (pages :roll-order-page)))
+    (s/global-put! :current-page (pages :roll-order-page)))
 
   (defroute "/roller" []
-    (global-put! :current-page (pages :roller-page)))
+    (s/global-put! :current-page (pages :roller-page)))
 
   (hook-browser-navigation!)
   )

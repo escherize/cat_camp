@@ -7,7 +7,8 @@
 ;; ----------
 ;; State
 (def app-state
-  (atom {:turn-count -1
+  (atom {:debug? true
+         :turn-count -1
          :last-roll 0
          :history (blank-history)
          :players {:1 {:name ""

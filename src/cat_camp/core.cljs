@@ -1,13 +1,14 @@
 (ns cat-camp.core
   (:require [reagent.core :as reagent]
-            [cat-camp.session :refer [global-state]]
+            [cat-camp.session :as s]
             [cat-camp.routes :as routes]
             [cat-camp.views.common :as common]))
 
 (defn page-render []
   [:div.container
    [common/header]
-   [(global-state :current-page)]])
+   [(s/global-state :current-page)]
+   [common/footer]])
 
 (defn page-component [] 
   (reagent/create-class {:component-will-mount routes/app-routes
