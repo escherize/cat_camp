@@ -9,7 +9,7 @@
    [common/header]
    [(global-state :current-page)]])
 
-(defn page-component [] 
+(defn page-component []
   (reagent/create-class {:component-will-mount routes/app-routes
                          :render page-render}))
 

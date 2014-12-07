@@ -14,11 +14,12 @@
     (take (count coll) (concat head coll))))
 
 (defn roll-dice []
-  (global-put! :turn-count (inc (global-state :turn-count)))
-  (global-put! :last-roll (roll))
-  (global-put! :history
-        (update-in (global-state :history)
-                   [(global-state :last-roll)] inc)))
+  (let [outcome (roll)
+;        whose-roll (global-state :current-player)
+        ]
+    (global-put! :turn-count (inc (global-state :turn-count)))
+    (global-put! :last-roll outcome)
+    (global-put! :history (update-in (global-state :history) [(global-state :last-roll)] inc))))
 
 (defn ->players [app-state]
   (let [unordered
