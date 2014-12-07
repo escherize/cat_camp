@@ -12,12 +12,15 @@
   (let [head (drop-while pred coll)]
     (take (count coll) (concat head coll))))
 
-(defn named-player-names []
+(defn named-players-names []
   (->> @s/app-state
+       :players
+       vals
+       (map :name)
        (remove empty?)))
 
 (defn named-players []
-  (count (named-player-names)))
+  (count (named-players-names)))
 
 (defn roll-dice []
   (s/global-put! :turn-count (inc (s/global-state :turn-count)))
@@ -31,6 +34,5 @@
                           (:players s/app-state))
         top-roll  (apply max (map :order-roll unordered))
         ordered   (rotate-while #(not= (:order-roll %) top-roll) unordered)]
-    (pr-str ordered)
     ordered))
 

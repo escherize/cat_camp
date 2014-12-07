@@ -6,7 +6,7 @@
 (defn player-input [number placeholder]
   (let [player-map (ses/player number)]
     [:div
-     [:pre (pr-str player-map)]
+     ;;     [:pre (pr-str player-map)]
      [:input.player-input
       (let [pi {:type "text"
                 :value (:name player-map)
