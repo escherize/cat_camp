@@ -1,6 +1,5 @@
 (ns cat-camp.util
-  (:require [cat-camp.session :refer [global-put!
-                                      global-state]]))
+  (:require [cat-camp.session :as s]))
 
 (defn roll []
   (+ (inc (rand-int 6))
@@ -13,24 +12,20 @@
   (let [head (drop-while pred coll)]
     (take (count coll) (concat head coll))))
 
-(defn roll-dice []
-  (let [outcome (roll)
-;        whose-roll (global-state :current-player)
-        ]
-    (global-put! :turn-count (inc (global-state :turn-count)))
-    (global-put! :last-roll outcome)
-    (global-put! :history (update-in (global-state :history) [(global-state :last-roll)] inc))))
+(defn named-players-names []
+  (->> @s/app-state
+       :players
+       vals
+       (map :name)
+       (remove empty?)))
 
-(defn ->players [app-state]
-  (let [unordered
-        [{:name (get @app-state :p1)
-          :order-roll (get @app-state :p1-roll)}
-         {:name (get @app-state :p2)
-          :order-roll (get @app-state :p2-roll)}
-         {:name (get @app-state :p3)
-          :order-roll (get @app-state :p3-roll)}
-         {:name (get @app-state :p4)
-          :order-roll (get @app-state :p4-roll)}]
-        top-roll (apply max (map :order-roll unordered))
-        ordered (rotate-while #(not= (:order-roll %) top-roll) unordered)]
-    ordered))
+(defn named-players []
+  (count (named-players-names)))
+
+(defn roll-dice []
+  (s/global-put! :turn-count (inc (s/global-state :turn-count)))
+  (s/global-put! :last-roll (roll))
+  (s/global-put! :history
+               (update-in (s/global-state :history)
+                          [(s/global-state :last-roll)] inc)))
+

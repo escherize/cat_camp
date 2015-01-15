@@ -1,33 +1,50 @@
-# cat_camp
+catan companion
+================
 
-A reagent webapp designed to ... well, that part is up to you.
+This is a small static webapp diceroller. Fun!
+---
 
-## Usage
+It's a Clojure/ClojureScript app based on Reagent, with dynamic reloading of Clojure, ClojureScript, and CSS and a browser-connected REPL.
 
-Create a javascript file from your clojurescript files.
+### Development mode
 
-```
-$ lein cljsbuild auto
-```
-
-Start a repl and type the following:
+Start the server:
 
 ```
-(run!)
+lein ring server
 ```
 
-Open a browser and go to *localhost:8080*. You should see your reagent application!
-
-If you want to start a brepl, type the following:
-
-```
-(cljs!)
-```
-
-Then type:
+If you don't plan on using the optional development tools, you will
+have to manually compile the cljs files:
 
 ```
-(println "hello world")
+lein cljsbuild once
 ```
 
-In your browser, hit `f12`.  You should see *hello world* printed to the console.
+Wait a bit, then browse to [http://localhost:3000](http://localhost:3000).
+
+
+#### Reccomended development tools
+
+Automatically push cljs changes to the browser:
+
+```
+$ lein repl
+
+(start-figwheel)
+```
+
+Start the browser REPL:
+
+```
+$ lein repl
+
+(browser-repl)
+```
+
+### Building for release
+
+```
+lein cljsbuild clean
+lein ring uberjar
+```
